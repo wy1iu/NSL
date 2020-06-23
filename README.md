@@ -78,8 +78,8 @@ If you find our work useful in your research, please consider to cite:
 
 #### Part 3: Global Neural Similarity (Self-attention SphereNet)
 
-	```Shell
+
 	cd $NSL_ROOT/NSL/sa-spherenet
 	python train_sa.py
-	```
+
 
