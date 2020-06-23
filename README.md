@@ -46,11 +46,17 @@ If you find our work useful in your research, please consider to cite:
 
 ### Usage
 
-#### Part 1: Clone the repositary
+#### Part 1.1: Clone the repositary
   - Clone the repositary.
 
 	```Shell
 	git clone https://github.com/wy1iu/NSL.git
+	```
+
+#### Part 1.2: Download the CIFAR-10/100 data
+  - Run the bash script.
+	```Shell
+	./dataset_setup.sh
 	```
 
 #### Part 2: Image Classification on CIFAR-10/100
@@ -78,8 +84,10 @@ If you find our work useful in your research, please consider to cite:
 
 #### Part 3: Global Neural Similarity (Self-attention SphereNet)
 
-
+  - We implement a self-attention SphereNet as an example of global neural similarity (described in Appendix B of our paper).
+	```Shell	
 	cd $NSL_ROOT/NSL/sa-spherenet
 	python train_sa.py
+  	```
 
 
