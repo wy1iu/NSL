@@ -30,6 +30,7 @@ import tensorflow as tf
 IMAGE_SIZE = 32
 
 # Global constants describing the CIFAR-10 data set.
+NUM_CLASSES = 10
 NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 50000
 NUM_EXAMPLES_PER_EPOCH_FOR_EVAL = 10000
 
@@ -63,7 +64,7 @@ def read_cifar10(filename_queue):
   # Dimensions of the images in the CIFAR-10 dataset.
   # See http://www.cs.toronto.edu/~kriz/cifar.html for a description of the
   # input format.
-  label_bytes = 2  # 2 for CIFAR-100
+  label_bytes = 1  # 2 for CIFAR-100
   result.height = 32
   result.width = 32
   result.depth = 3
@@ -83,7 +84,7 @@ def read_cifar10(filename_queue):
 
   # The first bytes represent the label, which we convert from uint8->int32.
   result.label = tf.cast(
-      tf.strided_slice(record_bytes, [1], [label_bytes]), tf.int32)
+      tf.strided_slice(record_bytes, [0], [label_bytes]), tf.int32)
 
   # The remaining bytes after the label represent the image, which we reshape
   # from [depth * height * width] to [depth, height, width].
@@ -147,7 +148,8 @@ def distorted_inputs(data_dir, batch_size):
     images: Images. 4D tensor of [batch_size, IMAGE_SIZE, IMAGE_SIZE, 3] size.
     labels: Labels. 1D tensor of [batch_size] size.
   """
-  filenames = [os.path.join(data_dir, 'train.bin')]
+  filenames = [os.path.join(data_dir, 'data_batch_%d.bin' % i)
+               for i in xrange(1, 6)]
   for f in filenames:
     if not tf.gfile.Exists(f):
       raise ValueError('Failed to find file: ' + f)
@@ -161,10 +163,7 @@ def distorted_inputs(data_dir, batch_size):
 
   height = IMAGE_SIZE
   width = IMAGE_SIZE
-  distorted_image = tf.pad(reshaped_image, [[4,4], [4,4], [0,0]], "SYMMETRIC")
-  distorted_image = tf.random_crop(distorted_image, [height, width, 3])
-  float_image = tf.image.random_flip_left_right(distorted_image)
-  #float_image = tf.image.random_flip_left_right(reshaped_image)
+  float_image = tf.image.random_flip_left_right(reshaped_image)
   
   ''' 
   # Image processing for training the network. Note the many random
@@ -219,7 +218,7 @@ def inputs(eval_data, data_dir, batch_size):
                  for i in xrange(1, 6)]
     num_examples_per_epoch = NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN
   else:
-    filenames = [os.path.join(data_dir, 'test.bin')]
+    filenames = [os.path.join(data_dir, 'test_batch.bin')]
     num_examples_per_epoch = NUM_EXAMPLES_PER_EPOCH_FOR_EVAL
 
   for f in filenames:

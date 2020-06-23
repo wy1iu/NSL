@@ -37,7 +37,7 @@ def train(base_lr=1e-3, batch_sz=128, gpu_no=0):
     momentum = 0.9
     is_training = tf.placeholder("bool")
 
-    data_path = os.path.join(root_path, '../../cifar-100-binary')
+    data_path = os.path.join(root_path, '../../../data/cifar-100')
     tr_images, tr_labels = distorted_inputs(data_path, batch_sz)
     te_images, te_labels = inputs(True, data_path, batch_test)
     images, labels = tf.cond(is_training, lambda: [tr_images, tr_labels], 

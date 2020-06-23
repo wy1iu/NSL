@@ -58,7 +58,7 @@ If you find our work useful in your research, please consider to cite:
 
 	```Shell
 	cd $NSL_ROOT/NSL/nsl_image_recog/experiments_cifar10/dynamic_dns/
-	python train_NSL.py
+	python train.py
 	```
 
   - To train the other models CIFAR-10, change the foler to the corresponding one.
@@ -67,13 +67,13 @@ If you find our work useful in your research, please consider to cite:
   
   ```Shell
 	cd $NSL_ROOT/NSL/nsl_image_recog/experiments_cifar100/dynamic_dns/
-	python train_NSL.py
+	python train.py
   ```
   - Best-performing model: NSL with full SphereNet as the neural similarity predictor
   
   ```Shell
 	cd $NSL_ROOT/NSL/nsl_image_recog/nsl_fspherenet/
-	python train_NSL_fspherenet.py
+	python train_nsl_fs.py
   ```
 
 #### Part 3: Global Neural Similarity (Self-attention SphereNet)

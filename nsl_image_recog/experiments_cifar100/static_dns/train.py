@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 from loss import loss2
-from cifar10_input import *
+from cifar100_input import *
 from architecture import VGG
 import os
 import argparse
@@ -14,7 +14,7 @@ def train(base_lr=1e-3, batch_sz=128, gpu_no=0):
     root_path = os.path.dirname(os.path.realpath(__file__))
     folder_name = os.path.basename(root_path)
 
-    log_path = os.path.join(root_path, '../../log_cifar10')
+    log_path = os.path.join(root_path, '../../log_cifar100')
     if not os.path.exists(log_path):
         os.mkdir(log_path)
     log_path = os.path.join(log_path, folder_name)
@@ -22,14 +22,14 @@ def train(base_lr=1e-3, batch_sz=128, gpu_no=0):
         os.mkdir(log_path)
 
 
-    save_path = os.path.join(root_path, '../../model_cifar10')
+    save_path = os.path.join(root_path, '../../model_cifar100')
     if not os.path.exists(save_path):
         os.mkdir(save_path)
     save_path = os.path.join(save_path, folder_name)
     if not os.path.exists(save_path):
         os.mkdir(save_path)
 
-    n_class = 10
+    n_class = 100
     batch_sz = batch_sz
     batch_test = 100
     max_epoch = 42500
@@ -37,7 +37,7 @@ def train(base_lr=1e-3, batch_sz=128, gpu_no=0):
     momentum = 0.9
     is_training = tf.placeholder("bool")
 
-    data_path = os.path.join(root_path, '../../cifar-10-batches-bin')
+    data_path = os.path.join(root_path, '../../../data/cifar-100')
     tr_images, tr_labels = distorted_inputs(data_path, batch_sz)
     te_images, te_labels = inputs(True, data_path, batch_test)
     images, labels = tf.cond(is_training, lambda: [tr_images, tr_labels], 
@@ -132,5 +132,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     train(args.base_lr, args.batch_size)
-
-
