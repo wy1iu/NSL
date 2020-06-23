@@ -25,7 +25,7 @@ generalizing inner product with a bilinear matrix, we propose the neural similar
 
 Our paper is accepted to **NeurIPS 2019**. The full paper is available at [arXiv](https://arxiv.org/abs/1910.13003) and [here](https://wyliu.com/papers/LiuNSL2019.pdf)
 
-<img src="assets/NSL_fig.png" width="40%" height="40%">
+<img src="assets/NSL_fig.png" width="45%" height="45%">
 
 ### Citation
 
