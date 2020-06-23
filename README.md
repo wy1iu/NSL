@@ -75,7 +75,7 @@ If you find our work useful in your research, please consider to cite:
 	cd $NSL_ROOT/nsl_image_recog/experiments_cifar100/dynamic_dns/
 	python train.py
   	```
-  - Best-performing model: NSL with full SphereNet as the neural similarity predictor
+  - Best-performing model: NSL with full SphereNet as the neural similarity predictor (not appear in our paper)
   
 	```Shell
 	cd $NSL_ROOT/nsl_image_recog/nsl_fspherenet/
