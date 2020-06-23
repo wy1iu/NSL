@@ -62,7 +62,8 @@ If you find our work useful in your research, please consider to cite:
   - Training NSL on CIFAR-10 (e.g. dynamic neural similarity network with DNS)
 
 	```Shell
-	cd $NSL_ROOT/NSL/nsl_image_recog/experiments_cifar10/dynamic_dns/
+	# $NSL_ROOT is the directory for this repository
+	cd $NSL_ROOT/nsl_image_recog/experiments_cifar10/dynamic_dns/
 	python train.py
 	```
 
@@ -71,13 +72,13 @@ If you find our work useful in your research, please consider to cite:
   - Training NSL on CIFAR-100 (e.g. dynamic neural similarity network with DNS)
   
 	```Shell
-	cd $NSL_ROOT/NSL/nsl_image_recog/experiments_cifar100/dynamic_dns/
+	cd $NSL_ROOT/nsl_image_recog/experiments_cifar100/dynamic_dns/
 	python train.py
   	```
   - Best-performing model: NSL with full SphereNet as the neural similarity predictor
   
 	```Shell
-	cd $NSL_ROOT/NSL/nsl_image_recog/nsl_fspherenet/
+	cd $NSL_ROOT/nsl_image_recog/nsl_fspherenet/
 	python train_nsl_fs.py
   	```
 
@@ -85,7 +86,7 @@ If you find our work useful in your research, please consider to cite:
 
   - We implement a self-attention SphereNet as an example of global neural similarity (described in Appendix B of our paper).
 	```Shell	
-	cd $NSL_ROOT/NSL/sa-spherenet
+	cd $NSL_ROOT/sa-spherenet
 	python train_sa.py
   	```
 
