@@ -86,7 +86,7 @@ If you find our work useful in your research, please consider to cite:
 
   - We implement a self-attention [SphereNet](https://github.com/wy1iu/SphereNet) as an example of global neural similarity (described in Appendix B of our paper).
 	```Shell	
-	cd $NSL_ROOT/sa-spherenet
+	cd $NSL_ROOT/nsl_global_ns
 	python train_sa.py
   	```
 
